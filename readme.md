@@ -32,7 +32,7 @@ to implement their products on a range of platforms without worrying about misun
 # ![](https://fonts.gstatic.com/s/i/materialicons/code/v5/24px.svg) Reference Implementations
 &nbsp;							| &nbsp;
 ---:							| ---
-Go implementation (big list)	| https://github.com/codemodify/systemkit-service
+Go implementation				| https://github.com/codemodify/systemkit-service
 Command line tool 				| https://github.com/codemodify/systemkit-service-cli
 Samples &amp; Tests				| https://github.com/codemodify/systemkit-service-tests
 Init Frameworks					| https://github.com/codemodify/systemkit-service-encoders-rc_d
