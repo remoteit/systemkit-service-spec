@@ -63,7 +63,7 @@
 	>_`Info()`_								| Queries the service
 	>___ 									| ___
 	>_`NewServiceFromSERVICE()`_			| Service from portable `SERVICE` definition
-	>_`NewServiceFromName()`_				| Service by finding in the system using its name
+	>_`NewServiceFromName()`_				| Service by finding it in the system using its name
 	>_`NewServiceFromPlatformTemplate()`_	| Service from a platform dependent template
 
 * Terminal
@@ -107,8 +107,8 @@ as well as developer and user friendliness of the material provided which in its
 engineering force to provide support for one or another platform - __THE TAKE AWAY IS__ - In the end what
 matters is to have an OS efficient and developer friendly mechanics to manipulate a service._
 
->__This repo proposes to create a portable `SERVICE` definition that can be used by developers to implement their
-products on a range of platforms without worrying about the misunderstood genius on each of those.__
+>__This repo proposes to create a portable `SERVICE` definition that can be used by developers and businesses
+to implement their products on a range of platforms without worrying about the misunderstanding the genius on each of those.__
 
 - Use Case (A) - __code__
 	- `NewServiceFromSERVICE()`
@@ -133,7 +133,71 @@ products on a range of platforms without worrying about the misunderstood genius
 	- convert platform dependent format to a different platform dependent format, by going through `SERVICE` format
 
 #### SERVICE portable service description format
-
+```json
+{
+	"name": "test-service",
+	"description": "Test Service",
+	"documentation": "http://test-service.com",
+	"executable": "/bin/sleep",
+	"args": [
+		"40"
+	],
+	"workingDirectory": "/tmp",
+	"environment": {
+		"API_URL": "https://api.test-service.com"
+	},
+	"dependsOn": [
+		"network"
+	],
+	"dependsOnOverrides": {
+		"init_rc.d": {
+			"remove": [
+				"*"
+			],
+			"add": [
+				"bumblebee",
+				"mumbled"
+			]
+		},
+		"init_systemd": {
+			"add": [
+				"printer"
+			]
+		},
+		"os_freebsd": {
+			"add": [
+				"linux"
+			]
+		},
+		"os_linux": {
+			"add": [
+				"bluetooth"
+			]
+		}
+	},
+	"start": {
+		"atBoot": true,
+		"restart": true,
+		"restartTimeout": 10
+	},
+	"logging": {
+		"stdout": {
+			"disabled": false,
+			"useDefault": false,
+			"value": "/var/log/test-service-stdout.log"
+		},
+		"stderr": {
+			"disabled": false,
+			"useDefault": false,
+			"value": "/var/log/test-service-stderr.log"
+		}
+	},
+	"credentials": {
+		"user": "user",
+		"group": "group"
+	}
+}
+```
 # ![](https://fonts.gstatic.com/s/i/materialicons/bookmarks/v4/24px.svg) References & Credits
 **Any missing credits are the author's unconscious errors**
 - https://en.wikipedia.org/wiki/Operating_system_service_management

@@ -34,8 +34,8 @@ type SERVICE struct {
 	Executable              string                     `json:"executable,omitempty"`              //
 	Args                    []string                   `json:"args,omitempty"`                    //
 	WorkingDirectory        string                     `json:"workingDirectory,omitempty"`        //
-	Environment             map[string]string          `json:"environment,omitempty"`             // similar SystemD: Environment=
-	DependsOn               []ServiceType              `json:"dependsOn,omitempty"`               // similar SystemD: Requires=
+	Environment             map[string]string          `json:"environment,omitempty"`             //
+	DependsOn               []ServiceType              `json:"dependsOn,omitempty"`               //
 	DependsOnOverrideByOS   map[OsType][]ServiceType   `json:"dependsOnOverrideByOS,omitempty"`   //
 	DependsOnOverrideByInit map[InitType][]ServiceType `json:"dependsOnOverrideByInit,omitempty"` //
 	Start                   StartConfig                `json:"start,omitempty"`                   //
